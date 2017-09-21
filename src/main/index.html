@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<meta http-eqiuv="Content-type" content="text/html"; charset="utf-8">
+		<meta charset="utf-8">
 		<title>Lab1</title>
 		<style type="text/css">
-			H1 { 
-			    font-size: 120%; /* Размер шрифта */
-			    font-family: Verdana, Arial, Helvetica, sans-serif; /* Семейство шрифта */
+			body {
+				background-image: url("./images/background.jpg");
+				font-family: Verdana, Arial, Helvetica, sans-serif; /* Семейство шрифта */
 			    color: #336; /* Цвет текста */
+			}
+
+	   		table {
+	   			border: "0" ; 
+	   			border-spacing: "0" ;
+	   			width: "100%"
+	   		}
+
+	   		marquee { 
+			    font-size: 150%; /* Размер шрифта */
 	   		}
 		</style>
 
@@ -19,27 +29,40 @@
 				var r = document.getElementById("input_r");
 
 				var fl = false;
-				for (var i = 0, L = x.length; i < L; i++) {
+
+
+				for (var i = 0; i < x.length; i++) {
 			        if (x[i].checked) {
 			        	fl = true;
 			        }
 			    }
 			    if (!fl) {
-					x.style.border = "2px solid red";
-					return false;
+					alert ("Choose X");
 				}
+
 
 				if (!y.value) {
-					y.style.border = "2px solid red";
-					return false;
+					alert ("Set Y");
+					fl = false;
 				}
+				if (isNaN(parseFloat(y.value)) || isFinite(y.value)) {
+					alert("Y is not a real number");
+					fl = false;
+				}
+
 
 				if (!r.value) {
-					r.style.border = "2px solid red";
-					return false;
+					alert ("Set R");
+					fl = false;
+				}
+				if (isNaN(parseFloat(r.value)) || isFinite(r.value)) {
+					alert("R is not a real number");
+					fl = false;
 				}
 
-				return true;
+
+				if (!fl) return false;
+					else return true;
 			}
 			
 			setInterval(function() {
@@ -52,28 +75,28 @@
 
 	<body>
 		<form onsubmit="return validate();">
-			<table border="0" cellpadding="0" cellspacing="0" width="100%">
+			<table>
 				<!-- <iframe> для вставки чужого сайта к себе, напрмер вк и чужую лабу -->
 				<tr>
-					<td colspan="2">
-						<H1>
+					<td colspan="3">
+						<marquee scrollamount="7%">
 							Shapka of Esakov Kirill Igorevich, 
 							of the blood of Old Chelyaba. King of Uranus, and the First Spilled Lessons, Gentelman Regnant of the Eight Semesters, Khal of the Great City on the Neva, Breaker of Bugs, the Unexpelled, from group №P3200 (var №302)
-						</H1>
+						</marquee>
 					</td>
 				</tr>
 				<tr>
 					<td>X:</td>
 					<td>
-						<input type="radio" name="input_x" id="input_x" value="-5">-5</input>
-						<input type="radio" name="input_x" id="input_x" value="-4">-4</input>
-						<input type="radio" name="input_x" id="input_x" value="-3">-3</input>
-						<input type="radio" name="input_x" id="input_x" value="-2">-2</input>
-						<input type="radio" name="input_x" id="input_x" value="-1">-1</input>
-						<input type="radio" name="input_x" id="input_x" value="0">0</input>
-						<input type="radio" name="input_x" id="input_x" value="1">1</input>
-						<input type="radio" name="input_x" id="input_x" value="2">2</input>
-						<input type="radio" name="input_x" id="input_x" value="3">3</input>
+						<input type="radio" name="input_x" value="-5">-5
+						<input type="radio" name="input_x" value="-4">-4
+						<input type="radio" name="input_x" value="-3">-3
+						<input type="radio" name="input_x" value="-2">-2
+						<input type="radio" name="input_x" value="-1">-1
+						<input type="radio" name="input_x" value="0">0
+						<input type="radio" name="input_x" value="1">1
+						<input type="radio" name="input_x" value="2">2
+						<input type="radio" name="input_x" value="3">3
 					</td>
 					<td rowspan="4">
 						<img src="./images/region.jpg" width="252" height="245" alt="region">
@@ -82,13 +105,13 @@
 				<tr>
 					<td>Y:</td>
 					<td>
-						<input type="text" id="input_y"></input>
+						<input type="text" id="input_y">
 					</td>
 				</tr>
 				<tr>
 					<td>R:</td>
 					<td>
-						<input type="text" id="input_r"></input>
+						<input type="text" id="input_r">
 					</td>
 				</tr>
 				<tr>
