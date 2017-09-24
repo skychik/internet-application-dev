@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Lab1</title>
+		<style type="text/css">
+			body {
+				background-image: url("./images/background.jpg");
+				font-family: Verdana, Arial, Helvetica, sans-serif; /* Семейство шрифта */
+			    color: #336; /* Цвет текста */
+			}
+
+	   		table {
+	   			border: 0px; 
+	   			border-spacing: 0px;
+	   			width: 100%;
+	   		}
+
+	   		td.first {
+	   			padding-left: 2%;
+	   			width: 20px;
+	   		}
+
+	   		td > img {
+	   			text-align: center;
+	   			margin-top: 2%;
+	   		}
+
+	   		marquee { 
+			    font-size: 150%; /* Размер шрифта */
+	   		}
+
+	   		select {
+	   			margin-left: 3%;
+	   		}
+
+	   		input {
+	   			margin-left: 3%;
+	   		}
+
+	   		input[type="text"] {
+	   			padding: 4px;
+	   		}
+
+	   		a.link {
+	   			font-size: 150%; 
+	   			font-weight: 700;
+			    color: navy; /* Цвет текста */
+			    font-family: monospace; /* Моноширинный шрифт */
+			    quotes: "<" ">"; /* Устанавливаем вид кавычек */
+		   	} 
+			a.link::before {
+			    content: open-quote; /* Добавляем перед текстом открывающую кавычку */
+		  	}
+			a.link::after {
+			    content: close-quote; /* Добавляем после текста закрывающую кавычку */
+		  	}
+
+		  	.GeneratedMarquee {
+				font-size:150%;
+				line-height:1.3em;
+				padding:1.5px;
+			}
+		</style>
+
+		<script type="text/javascript">
+
+			function validate() {
+				var x = document.getElementById("input_x");
+				var y = document.getElementById("input_y");
+				var r = document.getElementById("input_r");
+
+				var fl = true;
+
+			    if (!x.value) {
+					alert ("Choose X");
+					fl = false;
+				}
+
+
+				if (!y.value) {
+					alert ("Set Y");
+					fl = false;
+				}
+				if (!isFinite(parseFloat(+ y.value.replace(',', '.')))) {
+					alert("Y is not a real number");
+					fl = false;
+				} else if (parseFloat(+ y.value.replace(',', '.')) < -5.0 || parseFloat(+ y.value.replace(',', '.')) > 5.0) {
+					alert("Y gotta be between -5 and 5");
+					fl = false;
+				}
+
+
+				if (!r.value) {
+					alert ("Set R");
+					fl = false;
+				}
+				if (!isFinite(parseFloat(+ r.value.replace(',', '.')))) {
+					alert("R is not a real number");
+					fl = false;
+				} else if (parseFloat(+ r.value.replace(',', '.')) < 2.0 || parseFloat(+ r.value.replace(',', '.')) > 5.0) {
+					alert("R gotta be between 2 and 5");
+					fl = false;
+				} 
+
+
+				return fl;
+			}
+			
+			setInterval(function() {
+				var date = new Date();
+				var time = date.getHours() + ":" + date.getMinutes() + ":" + date.getSeconds();
+				document.getElementById("time").innerHTML = time;
+			}, 1000)
+		</script>
+	</head>
+
+	<body>
+		<form onsubmit="return validate();" action="script.php" method="GET">
+			<table>
+				<!-- <iframe> для вставки чужого сайта к себе, напрмер вк и чужую лабу -->
+				<tr>
+					<td colspan="3" class="first">
+						<marquee class="GeneratedMarquee" direction="left" scrollamount="10" behavior="scroll">
+							Shapka of Esakov Kirill Igorevich, of the blood of Old Chelyaba. 
+							King of Uranus, and the First Spilled Lessons, Gentelman Regnant of the Eight Semesters, Khal of the Great City on the Neva, Breaker of Bugs, the Unexpelled, from group №P3200 (var №903)
+						</marquee>
+					</td>
+				</tr>
+				<tr>
+					<td class="first">X:</td>
+					<td>
+						<select id="input_x" name="input_x" >
+							<option disabled>x:</option>
+							<option value="-5">-5</option>
+							<option value="-4">-4</option>
+							<option value="-3">-3</option>
+							<option value="-2">-2</option>
+							<option value="-1">-1</option>
+							<option value="0">0</option>
+							<option value="1">1</option>
+							<option value="2">2</option>
+							<option value="3">3</option>
+						</select>
+					</td>
+					<td rowspan="4">
+						<img src="./images/region.jpg" width="410" height="352" alt="region">
+					</td>
+				</tr>
+				<tr>
+					<td class="first">Y:</td>
+					<td>
+						<input type="text" id="input_y" name="input_y">
+					</td>
+				</tr>
+				<tr>
+					<td class="first">R:</td>
+					<td>
+						<input type="text" id="input_r" name="input_r">
+					</td>
+				</tr>
+				<tr>
+					<td colspan="2" class="first">
+						<button type="submit" name="submit_form" value="send">Check</button>
+					</td>
+				</tr>
+				<tr>
+					<td colspan="3" class="first">
+					 	<a href="./images/lab1var302.png" class="link">Link on var №903</a>
+					</td>
+				</tr>
+			</table>
+		</form>
+	</body>
+</html>
